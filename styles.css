@@ -1,0 +1,20 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-gap: 2px;
+}
+
+.board div {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+}
+
+.board div.hit {
+    background-color: red;
+}
+
+.board div.miss {
+    background-color: #ccc;
+}

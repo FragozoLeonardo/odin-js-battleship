@@ -6,23 +6,24 @@ class Gameboard {
   }
 
   placeShip(x, y, ship) {
-    this.ships.push({ x, y, ship });
+    for (let i = 0; i < ship.length; i++) {
+      this.ships.push({ x: x, y: y + i, ship });
+    }
   }
 
   receiveAttack(x, y) {
     if (this.attacks.has(`${x},${y}`)) {
-      return false;
+      return false; // The attack has already happened here
     }
-
     this.attacks.add(`${x},${y}`);
-    const hitShip = this.ships.find(s => s.x === x && s.y === y);
-
-    if (hitShip) {
-      hitShip.ship.hit();
+    const target = this.ships.find(ship => ship.x === x && ship.y === y);
+    if (target) {
+      target.ship.hit();
+      return true;
     } else {
       this.misses.push({ x, y });
+      return false;
     }
-    return true;
   }
 
   allSunk() {
