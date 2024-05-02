@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function renderBoard(gameboard, element) {
   element.innerHTML = '';
+
+  // Assuming gameboard should have hits and misses arrays initialized, check them
+  if (!Array.isArray(gameboard.hits) || !Array.isArray(gameboard.misses)) {
+      console.error('Gameboard misses or hits properties are not initialized as arrays.');
+      return; // Stop execution as there is a critical problem
+  }
+
   for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
           const cell = document.createElement('div');
@@ -38,9 +45,9 @@ function renderBoard(gameboard, element) {
           cell.dataset.x = i;
           cell.dataset.y = j;
 
-          if(gameboard.hits.some(hit => hit.x === i && hit.y === j)) {
+          if (gameboard.hits.some(hit => hit.x === i && hit.y === j)) {
               cell.classList.add('hit');
-          } else if(gameboard.misses.some(miss => miss.x === i && miss.y === j)) {
+          } else if (gameboard.misses.some(miss => miss.x === i && miss.y === j)) {
               cell.classList.add('miss');
           }
 

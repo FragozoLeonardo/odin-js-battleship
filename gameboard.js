@@ -2,6 +2,7 @@ class Gameboard {
   constructor() {
     this.ships = [];
     this.misses = [];
+    this.hits = []; // Initialize hits as an array
     this.attacks = new Set();
   }
 
@@ -19,9 +20,10 @@ class Gameboard {
     const target = this.ships.find(ship => ship.x === x && ship.y === y);
     if (target) {
       target.ship.hit();
+      this.hits.push({x, y});  // Add the coordinates to hits array
       return true;
     } else {
-      this.misses.push({ x, y });
+      this.misses.push({x, y});  // Add the coordinates to misses array
       return false;
     }
   }
