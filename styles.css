@@ -1,20 +1,35 @@
 .board {
-    display: grid;
-    grid-template-columns: repeat(10, 30px);
-    grid-gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-gap: 2px;
 }
 
-.board div {
+.board .cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  background-color: white;
+}
+
+.board .cell.unrevealed {
+  background-color: white;
+}
+
+.board .cell {
     width: 30px;
     height: 30px;
-    background-color: #f0f0f0;
     border: 1px solid #000;
+    background-color: white;
 }
 
-.board div.hit {
-    background-color: red;
+.board .cell.unrevealed {
+    background-color: white;
 }
 
-.board div.miss {
-    background-color: #ccc;
+.board .cell.hit {
+    background-color: #86652f;
+}
+
+.board .cell.miss {
+    background-color: #addfff;
 }
